@@ -4,13 +4,13 @@
 - executionContext => stx
 - 
 
+formContext.getControl('ms_precio').addNotification({
+    messages: ['Si precio es nulo, descripcion tambien sera nulo'],
+    notificationLevel: 'ERROR'
+});
+
 */
 
-// notificacion
-//        formContext.getControl('ms_precio').addNotification({
-//            messages: ['Si precio es nulo, descripcion tambien sera nulo'],
-//            notificationLevel: 'ERROR'
-//        });
 
 //---------------------------------------------
 //  Mostrar datos de la tabla
@@ -181,23 +181,10 @@ function compareFechas(executionContext) {
 
     //compare
     if (fechaSalida < fechaLlegada) {
-        formContext.getControl('ms_fecha_salida').addNotification({
-            messages: ['Cago: sales el ' + fechaSalida + ' y llegas el ' + fechaLlegada],
-            notificationLevel: 'ERROR'
-        });
+        alert('error: sales el ' + fechaSalida + ' y llegas el ' + fechaLlegada);
 
     } else if (fechaSalida == fechaLlegada) {
-        formContext.getControl('ms_fecha_salida').addNotification({
-            messages: ['Entra y sale en la misma fecha. ¿Esta seguro?'],
-            notificationLevel: 'ERROR'
-        });
-
-
-    } else if (fechaSalida > fechaLlegada){
-        formContext.getControl('ms_fecha_salida').addNotification({
-            messages: ['fecha correcta: llegas ' + fechaLlegada + ' y sales ' + fechaSalida],
-            notificationLevel: 'RECOMMENDATION'
-        });
+        alert('Entra y sale en la misma fecha. ¿Esta seguro?');
     }
 
 }
@@ -262,4 +249,55 @@ function filtro(executionContext) {
         });
     }
 
+}
+
+//-----------------------------------------------------
+//      Guardar segun estado de departamento
+//-----------------------------------------------------
+function checkEstado(executionContext) {
+    debugger
+    const value = executionContext.getAttribute("ms_estado").getValue();
+
+
+    if (value[0] !== 100000000) {
+        return true;
+        //alert("Estado se puede cambiar");
+        //executionContext.getAttribute('ms_estado').setValue("100000000");
+    } else {
+        return false;
+        //alert("Estado NO se puede cambiar");
+    }
+
+}
+
+//-----------------------------------------------------
+//      Limpiar variable precio
+//-----------------------------------------------------
+function limpiarPrecio(executionContext) {
+    debugger
+    var formContext = executionContext.getFormContext();
+    
+    const precio = formContext.getAttribute("ms_precio").getValue();
+
+    if (precio !== null) {
+        alert("precio se puede limpiar");
+        formContext.getAttribute('ms_precio').setValue("");
+    } else {
+        alert("precio esta limpio");
+        //formContext.getAttribute('ms_precio').setValue(null);
+    }
+}
+
+function buttonCheck(executionContext){
+    debugger
+    const value = executionContext.getAttribute("ms_precio").getValue();
+
+
+    if (value !== null) {
+        return true;
+      
+    } else {
+        return false;
+    }
+    
 }

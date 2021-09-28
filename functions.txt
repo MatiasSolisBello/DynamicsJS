@@ -1,0 +1,15 @@
+-------------------DONE
+checkDataDepart -> Mostrar datos de la tabla
+LookDataUser -> Mostrar datos del usuario
+OcultarCampoCliente -> Setea un campo como oculto a cliente
+DesHabilitaCampo -> Setea un campo como deshabilitado
+onChange -> Precio => descripcion(precio + ciudad)
+filtro -> Filtro con js sobre precio reservas vs depart
+limpiarPrecio-> limpiar precio
+
+-------------------WORKING
+checkEstado -> 
+
+
+-------------------FAIL
+compareFechas
