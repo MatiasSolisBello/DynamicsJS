@@ -251,23 +251,30 @@ function filtro(executionContext) {
 
 }
 
+
 //-----------------------------------------------------
-//      Guardar segun estado de departamento
+//      Cambiar valor de estado de depart.
 //-----------------------------------------------------
-function checkEstado(executionContext) {
+function changeEstado(executionContext) {
+    debugger
+    const estado = executionContext.getAttribute("ms_estado").getValue();
+    
+    //si estado es distinto de disponible
+    if (estado[0] !== 100000000) {
+        executionContext.getAttribute('ms_estado').setValue([100000000]); //asigna disponible
+    }else {
+        alert("Departamento ya esta disponible");
+    }
+}
+
+function checkEstado(executionContext){
     debugger
     const value = executionContext.getAttribute("ms_estado").getValue();
-
-
     if (value[0] !== 100000000) {
         return true;
-        //alert("Estado se puede cambiar");
-        //executionContext.getAttribute('ms_estado').setValue("100000000");
     } else {
         return false;
-        //alert("Estado NO se puede cambiar");
     }
-
 }
 
 //-----------------------------------------------------
@@ -275,16 +282,12 @@ function checkEstado(executionContext) {
 //-----------------------------------------------------
 function limpiarPrecio(executionContext) {
     debugger
-    var formContext = executionContext.getFormContext();
-    
-    const precio = formContext.getAttribute("ms_precio").getValue();
+    const precio = executionContext.getAttribute("ms_precio").getValue();
 
     if (precio !== null) {
-        alert("precio se puede limpiar");
-        formContext.getAttribute('ms_precio').setValue("");
+        executionContext.getAttribute('ms_precio').setValue(0);
     } else {
         alert("precio esta limpio");
-        //formContext.getAttribute('ms_precio').setValue(null);
     }
 }
 
@@ -292,12 +295,9 @@ function buttonCheck(executionContext){
     debugger
     const value = executionContext.getAttribute("ms_precio").getValue();
 
-
     if (value !== null) {
         return true;
-      
     } else {
         return false;
     }
-    
 }
