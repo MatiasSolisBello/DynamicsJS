@@ -284,7 +284,7 @@ function limpiarPrecio(executionContext) {
     debugger
     const precio = executionContext.getAttribute("ms_precio").getValue();
 
-    if (precio !== null) {
+    if ( precio !== 0) {
         executionContext.getAttribute('ms_precio').setValue(0);
     } else {
         alert("precio esta limpio");
