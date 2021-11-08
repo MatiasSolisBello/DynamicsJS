@@ -1,19 +1,7 @@
 //---------------------------------------------
-//  Setea un campo como oculto a cliente
-//---------------------------------------------
-function HideField(executionContext, Proyecto, Caso) {
-    debugger
-    var formContext = executionContext.getFormContext();
-
-    formContext.getControl("cr544_wit_proyecto").setVisible(false);
-    formContext.getControl("cr544_incident").setVisible(false);
-
-}
-
-//---------------------------------------------
 //  La capacitacion se relaciona a (Proyecto/Caso/No Aplica)
 //---------------------------------------------
-function Relation(executionContext) {
+function Relation(executionContext, Proyecto, Caso) {
     debugger
     var formContext = executionContext.getFormContext();
 
@@ -33,6 +21,8 @@ function Relation(executionContext) {
             formContext.getControl("cr544_incident").setVisible(false);
             break;
         default:
+            formContext.getControl("cr544_wit_proyecto").setVisible(false);
+            formContext.getControl("cr544_incident").setVisible(false);
             break;
     }
 
